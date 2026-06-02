@@ -1,0 +1,50 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "backend/app/main.py",
+      "use": "@vercel/python"
+    },
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/auth/(.*)",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/products(.*)",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/customers(.*)",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/orders(.*)",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/dashboard/(.*)",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/health",
+      "dest": "backend/app/main.py"
+    },
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}
