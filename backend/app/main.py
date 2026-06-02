@@ -15,6 +15,26 @@ from . import models, schemas
 async def lifespan(app: FastAPI):
     # Create all database tables on startup if they don't exist
     Base.metadata.create_all(bind=engine)
+    
+    # Auto-seed a default administrator profile if not already present
+    from .database import SessionLocal
+    from . import auth as auth_utils
+    db = SessionLocal()
+    try:
+        admin_email = "admin@enterprise.com"
+        if not db.query(models.User).filter(models.User.email == admin_email).first():
+            db_user = models.User(
+                email=admin_email,
+                hashed_password=auth_utils.hash_password("adminpassword"),
+                full_name="System Administrator"
+            )
+            db.add(db_user)
+            db.commit()
+    except Exception as e:
+        print(f"[Lifespan Seed Alert] {str(e)}")
+    finally:
+        db.close()
+        
     yield
 
 app = FastAPI(

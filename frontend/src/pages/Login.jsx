@@ -23,8 +23,8 @@ export const Login = () => {
   const [showSimulatedAccounts, setShowSimulatedAccounts] = useState(false);
 
   // Form Fields
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('admin@enterprise.com');
+  const [password, setPassword] = useState('adminpassword');
   const [fullName, setFullName] = useState('');
 
   const VITE_GOOGLE_CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID || '';
@@ -188,6 +188,8 @@ export const Login = () => {
             onClick={() => {
               setIsRegister(false);
               setShowSimulatedAccounts(false);
+              setEmail('admin@enterprise.com');
+              setPassword('adminpassword');
             }}
             className="btn"
             style={{
@@ -208,6 +210,9 @@ export const Login = () => {
             onClick={() => {
               setIsRegister(true);
               setShowSimulatedAccounts(false);
+              setEmail('');
+              setPassword('');
+              setFullName('');
             }}
             className="btn"
             style={{
