@@ -8,7 +8,7 @@ class Settings(BaseSettings):
         env="DATABASE_URL"
     )
     CORS_ORIGINS: str = Field(
-        default="http://localhost:3000,http://localhost:5173",
+        default="*",
         env="CORS_ORIGINS"
     )
     ENV: str = Field(default="development", env="ENV")
