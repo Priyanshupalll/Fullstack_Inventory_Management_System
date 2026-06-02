@@ -4,7 +4,7 @@ from typing import List
 
 class Settings(BaseSettings):
     DATABASE_URL: str = Field(
-        default="postgresql://postgres:postgres@localhost:5432/inventory_db",
+        default="sqlite:///../inventory.db",
         env="DATABASE_URL"
     )
     CORS_ORIGINS: str = Field(
