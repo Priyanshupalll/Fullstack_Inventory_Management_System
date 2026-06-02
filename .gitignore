@@ -1,0 +1,40 @@
+# Dependencies
+**/node_modules/
+**/bower_components/
+
+# Python Virtual Environments
+**/.venv/
+**/venv/
+**/env/
+**/ENV/
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Python Compilation Cache
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.pytest_cache/
+**/.mypy_cache/
+
+# Databases
+**/*.db
+**/*.sqlite3
+
+# OS Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Frontend Compilation Builds
+**/dist/
+**/build/
+.svelte-kit/
+
+# Log Files
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
